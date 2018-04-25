@@ -1,3 +1,6 @@
+//question -
+//https://community.topcoder.com/stat?c=problem_statement&pm=1901&rd=4650
+
 #include <numeric>
 #include <iostream>
 #include <vector>
@@ -9,21 +12,16 @@ int getMax(vector<int> folders, int workers){
 	int n = folders.size();
 	int lo = *max_element(folders.begin(), folders.end());
 	int hi = accumulate(folders.begin(), folders.end(), 0);
-	cout << hi << " " << lo << endl;	
 	while(lo < hi){
 		int mi = lo + (hi-lo)/2;
-		cout << "mi = " << mi << endl;
 		int required = 1, currentLoad = 0;
 		for(int i=0; i<n; ++i) {
 			if( currentLoad + folders[i] <= mi){
 				currentLoad += folders[i];
-				cout << "cl = " << currentLoad << endl;
 			}
 			else{
-			 cout << "else" << endl;
 				++required;
 				currentLoad = folders[i];
-				cout << "cr = " << currentLoad << endl;
 			}
 		}
 		if (required <= workers)
@@ -41,7 +39,7 @@ int main() {
        calorie[i] = x;
     }
     int res = getMax(calorie, 3);
-    //cout << res << endl;
+    cout << res << endl;
     return 0;
 }
 
